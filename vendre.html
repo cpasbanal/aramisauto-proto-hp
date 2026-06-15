@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estimez votre voiture — Aramisauto</title>
+<style>
+  :root{
+    --prussian:#003C57;--lime:#6AD724;--lime-dark:#5bbd1c;--indigo:#6E6EFA;
+    --caribbean:#096F72;--purple:#3C1F82;--ink:#16283a;--grey:#5b6776;
+    --line:#e3e8ec;--bg:#f3f6f8;--radius:14px;--shadow:0 4px 18px rgba(22,33,62,.08);
+    --font:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--font);color:var(--ink);background:#fff;line-height:1.45}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+
+  /* header */
+  header{background:var(--prussian)}
+  .header-inner{display:flex;align-items:center;height:64px}
+  .logo img{height:30px;width:auto;display:block}
+
+  /* stepper sub-bar */
+  .steps-bar{border-bottom:1px solid var(--line);background:#fff}
+  .steps-inner{display:flex;align-items:center;gap:8px;height:64px}
+  .back{display:flex;align-items:center;gap:6px;font-weight:700;color:var(--prussian);text-decoration:underline;margin-right:24px;font-size:15px}
+  .step-tab{font-size:15px;font-weight:700;color:var(--grey);padding:9px 16px;border-radius:10px}
+  .step-tab.active{background:#f1f3f5;color:var(--prussian)}
+
+  /* main */
+  main{padding:46px 0 60px}
+  .cols{display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:start}
+  .form-col h1{font-size:34px;color:var(--prussian);font-weight:800;text-align:center;margin-bottom:14px}
+  .mandatory{color:var(--grey);text-align:center;margin-bottom:30px;font-size:15px}
+  .field-label{font-weight:800;color:var(--prussian);font-size:16px;margin-bottom:4px}
+  .field-help{color:var(--grey);font-size:14px;margin-bottom:10px}
+  .plate-row{display:flex;flex-direction:column;gap:16px;max-width:460px}
+
+  /* french plate input */
+  .plate{display:flex;align-items:stretch;border:2px solid var(--prussian);border-radius:10px;overflow:hidden;height:62px;background:#fff}
+  .plate .eu{background:#003399;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;width:42px;font-size:11px;font-weight:700;gap:4px}
+  .plate .eu .stars{color:#ffcc00;font-size:13px;line-height:1}
+  .plate input{flex:1;border:none;outline:none;font-size:24px;font-weight:800;letter-spacing:2px;text-align:center;color:var(--prussian);font-family:inherit;text-transform:uppercase}
+  .plate input::placeholder{color:#b6bdc8;font-weight:700;letter-spacing:1px}
+  .plate .fr{background:#003399;color:#fff;display:flex;align-items:flex-end;justify-content:center;width:42px;font-size:13px;font-weight:800;padding-bottom:8px}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;border:none;cursor:pointer;font-family:inherit;font-weight:800;border-radius:10px;font-size:16px;background:var(--lime);color:var(--prussian);padding:15px 26px;transition:.15s}
+  .btn:hover{background:var(--lime-dark)}
+
+  /* error message */
+  .plate-err{color:#d33;font-size:14px;font-weight:600;display:flex;align-items:center;gap:7px}
+  .plate-err::before{content:"⚠";font-size:15px}
+  .plate.invalid{border-color:#d33}
+
+  /* vehicle card */
+  .vcard{border:1px solid var(--line);border-radius:14px;padding:20px 22px;max-width:460px;box-shadow:var(--shadow);margin-bottom:30px}
+  .vcard-head{display:flex;align-items:center;gap:9px;font-weight:800;color:var(--prussian);font-size:15px;margin-bottom:14px}
+  .vcheck{width:22px;height:22px;border-radius:50%;background:var(--lime);color:var(--prussian);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900}
+  .vchange{margin-left:auto;font-size:13.5px;color:var(--caribbean);text-decoration:underline;font-weight:700}
+  .vinfo .vname{font-size:20px;font-weight:800;color:var(--prussian);margin-bottom:2px}
+  .vinfo .vline{font-size:17px;font-weight:800;color:#3a4858;line-height:1.5}
+
+  /* mileage */
+  .km-block{max-width:460px;margin-bottom:22px}
+  .km-input{display:flex;align-items:center;border:2px solid var(--prussian);border-radius:10px;overflow:hidden;height:58px;max-width:300px}
+  .km-input input{flex:1;border:none;outline:none;font-size:20px;font-weight:800;color:var(--prussian);font-family:inherit;padding:0 16px}
+  .km-input input::placeholder{color:#b6bdc8;font-weight:600;font-size:17px}
+  .km-input .km-unit{padding:0 18px;font-weight:800;color:var(--grey);background:#f1f3f5;align-self:stretch;display:flex;align-items:center}
+  .km-input.invalid{border-color:#d33}
+
+  /* estimation result */
+  .est-title{font-size:26px;color:var(--prussian);font-weight:800;margin-bottom:16px}
+  .est-box{background:#eafbe4;border-radius:14px;padding:28px;text-align:center;margin-bottom:22px;max-width:560px}
+  .est-amount{font-size:46px;font-weight:800;color:var(--prussian);line-height:1}
+  .est-valid{color:var(--grey);font-size:14px;margin-top:8px}
+  .est-vinfo{margin-bottom:10px}
+  .est-vinfo .vname{font-size:18px;font-weight:800;color:var(--prussian)}
+  .est-vinfo .vline{font-size:15px;font-weight:700;color:#3a4858;line-height:1.5}
+  .est-calc{display:inline-block;color:var(--caribbean);text-decoration:underline;font-size:14px;font-weight:700;margin-bottom:30px}
+  .est-sub{font-size:24px;color:var(--prussian);font-weight:800;margin-bottom:16px}
+  .offer{border:1px solid var(--line);border-radius:14px;padding:22px;max-width:560px;box-shadow:var(--shadow);margin-bottom:18px}
+  .offer b{display:block;font-size:18px;color:var(--prussian);margin-bottom:6px}
+  .offer p{color:var(--grey);font-size:14.5px}
+  .offer hr{border:none;border-top:1px solid var(--line);margin:16px 0}
+  .btn-out{background:#fff;color:var(--prussian);border:2px solid var(--prussian)}
+  .btn-out:hover{background:#eef4f7}
+
+  /* why card */
+  .why{background:#f4f6f8;border-radius:18px;padding:30px}
+  .why h2{font-size:21px;color:var(--prussian);font-weight:800;margin-bottom:22px}
+  .why-item{display:flex;gap:16px;margin-bottom:22px}
+  .why-item .ic{width:48px;height:48px;flex-shrink:0;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:var(--shadow)}
+  .why-item b{display:block;color:var(--prussian);font-size:16px;margin-bottom:3px}
+  .why-item p{color:var(--grey);font-size:14px}
+  .calc{border-top:1px solid var(--line);padding-top:20px}
+  .calc .t{display:flex;align-items:center;gap:8px;font-weight:800;color:var(--prussian);font-size:15px;margin-bottom:8px}
+  .calc p{color:var(--grey);font-size:14px}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:30px 0 24px;text-align:center}
+  .foot-links{display:flex;gap:8px 28px;flex-wrap:wrap;justify-content:center;margin-bottom:18px}
+  .foot-links a{font-size:14px;color:var(--ink);text-decoration:underline}
+  .foot-links a:hover{color:var(--caribbean)}
+  .copy{color:var(--grey);font-size:13.5px}
+
+  @media(max-width:860px){.cols{grid-template-columns:1fr}.why{order:-1}}
+  @media(max-width:560px){.steps-inner{gap:4px;overflow-x:auto}.step-tab{padding:9px 10px;font-size:13.5px}.back{margin-right:12px}}
+</style>
+</head>
+<body>
+
+<!-- header -->
+<header><div class="wrap header-inner">
+  <a class="logo" href="index.html" aria-label="Aramisauto">
+    <img src="https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75/https://webstatic.aramisauto.com/aramisauto/header/logo-aramisauto-group-white.svg" alt="Aramisauto">
+  </a>
+</div></header>
+
+<!-- stepper -->
+<div class="steps-bar"><div class="wrap steps-inner">
+  <a class="back" href="index.html">
+    <svg width="8" height="13" viewBox="0 0 8 13" fill="none"><path d="M6.5 1.5 1.5 6.5l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Précédent
+  </a>
+  <span class="step-tab active" id="step1">Votre voiture</span>
+  <span class="step-tab" id="step2">Vos coordonnées</span>
+  <span class="step-tab" id="step3">Votre estimation</span>
+</div></div>
+
+<!-- main -->
+<main><div class="wrap cols">
+
+  <!-- form -->
+  <div class="form-col">
+    <h1>Estimez votre voiture</h1>
+
+    <!-- STEP 1: plate entry -->
+    <div id="plateStep">
+      <p class="mandatory">Renseignez votre plaque d'immatriculation pour démarrer.</p>
+      <div class="plate-row">
+        <div>
+          <div class="field-label">Votre plaque d'immatriculation</div>
+          <div class="field-help">Nous identifions automatiquement votre véhicule.</div>
+        </div>
+        <div class="plate" id="plateBox">
+          <div class="eu"><span class="stars">★</span>F</div>
+          <input type="text" id="plateInput" placeholder="AB-123-CD" maxlength="9" aria-label="Plaque d'immatriculation">
+          <div class="fr">F</div>
+        </div>
+        <div class="plate-err" id="plateErr" hidden></div>
+        <button class="btn" id="plateBtn">Démarrer mon estimation gratuite</button>
+      </div>
+    </div>
+
+    <!-- STEP 2: vehicle found + mileage -->
+    <div id="vehicleStep" hidden>
+      <p class="mandatory">Nous avons identifié votre véhicule. Indiquez son kilométrage.</p>
+      <div class="vcard">
+        <div class="vcard-head">
+          <span class="vcheck">✓</span> Votre véhicule
+          <a href="#" id="changePlate" class="vchange">Modifier</a>
+        </div>
+        <div class="vinfo">
+          <div class="vname">PEUGEOT 208 Allure</div>
+          <div class="vline">Avril 2022</div>
+          <div class="vline">208 BlueHDi 100 S&amp;S BVM6</div>
+          <div class="vline">Diesel • Boîte manuelle</div>
+        </div>
+      </div>
+
+      <div class="km-block">
+        <div class="field-label">Kilométrage de votre voiture</div>
+        <div class="field-help">Reportez la valeur affichée au compteur.</div>
+        <div class="km-input">
+          <input type="text" id="kmInput" inputmode="numeric" placeholder="Ex : 100 000" aria-label="Kilométrage">
+          <span class="km-unit">km</span>
+        </div>
+        <div class="plate-err" id="kmErr" hidden></div>
+      </div>
+      <button class="btn" id="kmBtn">Continuer</button>
+    </div>
+
+    <!-- STEP 3: estimation result -->
+    <div id="estimateStep" hidden>
+      <h2 class="est-title">Votre estimation est de</h2>
+      <div class="est-box">
+        <div class="est-amount" id="estAmount">—</div>
+        <div class="est-valid">Cette estimation est valable 48h</div>
+      </div>
+      <div class="vinfo est-vinfo">
+        <div class="vname">PEUGEOT 208 Allure</div>
+        <div class="vline">Avril 2022 • <span id="estKm">— km</span></div>
+        <div class="vline">208 BlueHDi 100 S&amp;S BVM6</div>
+        <div class="vline">Diesel • Boîte manuelle</div>
+      </div>
+      <a href="#" class="est-calc">Comment est calculée l'estimation ?</a>
+
+      <h2 class="est-sub">Obtenez votre prix de reprise ferme</h2>
+      <div class="offer">
+        <b>Rendez-vous en agence – 30 minutes suffisent.</b>
+        <p>Un expert examine gratuitement votre véhicule et vous donne un prix de reprise définitif.</p>
+        <hr>
+        <button class="btn">📅 Prendre rendez-vous en agence</button>
+      </div>
+      <div class="offer">
+        <b>Besoin d'un échange avant de vous déplacer ?</b>
+        <p>Un conseiller peut répondre à vos questions et vous expliquer la suite du parcours de reprise.</p>
+        <hr>
+        <button class="btn btn-out">📞 Prendre un rendez-vous téléphonique</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- why choose -->
+  <aside class="why">
+    <h2>Pourquoi choisir Aramisauto ?</h2>
+    <div class="why-item">
+      <div class="ic">⏱️</div>
+      <div><b>Meilleur prix de reprise garanti</b><p>Si vous trouvez une meilleure offre, Aramisauto s'aligne et ajoute 100 € !</p></div>
+    </div>
+    <div class="why-item">
+      <div class="ic">📄</div>
+      <div><b>Aucune démarche administrative</b><p>Tous les avantages de la revente, sans les inconvénients !</p></div>
+    </div>
+    <div class="why-item">
+      <div class="ic">🚚</div>
+      <div><b>Reprise en agence ou à domicile</b><p>C'est où vous voulez et quand vous voulez, sans frais supplémentaires !</p></div>
+    </div>
+    <div class="calc">
+      <div class="t"><span>ⓘ</span> Comment est calculée l'estimation ?</div>
+      <p>L'estimation tient compte des données du marché, dans la perspective d'une revente possible de votre véhicule après son reconditionnement. Elle dépend de l'attractivité du véhicule, en fonction de la demande des automobilistes sur le marché (offre et demande).</p>
+    </div>
+  </aside>
+
+</div></main>
+
+<!-- footer -->
+<footer><div class="wrap">
+  <div class="foot-links">
+    <a href="#">Conditions générales</a>
+    <a href="#">Mentions légales</a>
+    <a href="#">Politique d'utilisation des données</a>
+    <a href="#">Gérer mes cookies</a>
+    <a href="#">Paiement sécurisé</a>
+  </div>
+  <div class="copy">© Aramisauto.com 2026</div>
+</div></footer>
+
+<script>
+const input=document.getElementById('plateInput');
+const box=document.getElementById('plateBox');
+const err=document.getElementById('plateErr');
+const btn=document.getElementById('plateBtn');
+const plateStep=document.getElementById('plateStep');
+const vehicleStep=document.getElementById('vehicleStep');
+
+// French SIV plate format: AA-123-AA
+const PLATE_RE=/^[A-Z]{2}-[0-9]{3}-[A-Z]{2}$/;
+
+// auto-format the plate as AB-123-CD while typing
+input.addEventListener('input',()=>{
+  let v=input.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7);
+  let out=v.slice(0,2);
+  if(v.length>2) out+='-'+v.slice(2,5);
+  if(v.length>5) out+='-'+v.slice(5,7);
+  input.value=out;
+  box.classList.remove('invalid'); err.hidden=true;
+});
+
+btn.addEventListener('click',()=>{
+  const v=input.value.trim().toUpperCase();
+  if(!PLATE_RE.test(v)){
+    err.textContent='Format de plaque invalide. Utilisez le format AB-123-CD.';
+    err.hidden=false; box.classList.add('invalid'); input.focus();
+    return;
+  }
+  // valid → show vehicle + mileage step
+  plateStep.hidden=true;
+  vehicleStep.hidden=false;
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+// allow Enter key to submit the plate
+input.addEventListener('keydown',e=>{if(e.key==='Enter') btn.click();});
+
+// "Modifier" → back to plate entry
+document.getElementById('changePlate').addEventListener('click',e=>{
+  e.preventDefault();
+  vehicleStep.hidden=true; plateStep.hidden=false;
+});
+
+// mileage step
+const km=document.getElementById('kmInput');
+const kmErr=document.getElementById('kmErr');
+const kmBox=km.parentNode;
+km.addEventListener('input',()=>{
+  // keep digits, group by thousands with spaces
+  let d=km.value.replace(/\D/g,'').slice(0,7);
+  km.value=d.replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+  kmBox.classList.remove('invalid'); kmErr.hidden=true;
+});
+const estimateStep=document.getElementById('estimateStep');
+function fmt(n){return n.toLocaleString('fr-FR').replace(/ /g,' ');}
+
+document.getElementById('kmBtn').addEventListener('click',()=>{
+  const n=parseInt(km.value.replace(/\s/g,''),10);
+  if(!n || n<100){
+    kmErr.textContent='Veuillez indiquer un kilométrage valide.';
+    kmErr.hidden=false; kmBox.classList.add('invalid'); km.focus();
+    return;
+  }
+  // mock estimation: base value depreciated by mileage, rounded to 5 €
+  let est=Math.max(3500, 14200 - Math.round(n*0.045));
+  est=Math.round(est/5)*5;
+  document.getElementById('estAmount').textContent=fmt(est)+' €';
+  document.getElementById('estKm').textContent=fmt(n)+' km';
+
+  // go to result step + update stepper
+  vehicleStep.hidden=true;
+  estimateStep.hidden=false;
+  document.getElementById('step1').innerHTML='Votre voiture ✓';
+  document.getElementById('step1').classList.remove('active');
+  document.getElementById('step2').innerHTML='Vos coordonnées ✓';
+  document.getElementById('step3').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+</body>
+</html>

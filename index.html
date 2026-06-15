@@ -75,10 +75,9 @@
   .tab-ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:21px;background:var(--teal-soft);flex-shrink:0}
   .tab-txt{font-size:16px;font-weight:800;color:var(--prussian);display:flex;align-items:center;gap:8px;line-height:1.2;flex-wrap:wrap}
   .tab .badge{background:var(--line);color:var(--grey);font-size:12.5px;font-weight:800;border-radius:20px;padding:1px 9px}
-  .tab.active{background:var(--prussian);border-color:var(--prussian);box-shadow:var(--shadow-lg)}
-  .tab.active .tab-txt{color:#fff}
+  .tab.active{background:var(--teal-soft);border-color:var(--caribbean);box-shadow:var(--shadow)}
+  .tab.active .tab-txt{color:var(--prussian)}
   .tab.active .tab-ic{background:var(--lime)}
-  .tab.active .badge{background:var(--lime);color:var(--prussian)}
 
   .panel{display:none;animation:fade .25s ease}
   .panel.active{display:block}
@@ -250,8 +249,6 @@
 </head>
 <body>
 
-<div class="note">Prototype — page d'accueil Aramisauto avec bannière hero remplacée par 3 onglets personnalisés</div>
-
 <!-- header -->
 <header><div class="wrap header-inner">
   <a class="logo" href="#" aria-label="Aramisauto">
@@ -289,15 +286,15 @@
   <div class="tabs" role="tablist">
     <button class="tab active" data-tab="recent" role="tab">
       <span class="tab-ic">🕘</span>
-      <span class="tab-txt">Récemment vues <span class="badge">4</span></span>
+      <span class="tab-txt">Récemment vues</span>
     </button>
     <button class="tab" data-tab="searched" role="tab">
       <span class="tab-ic">🔍</span>
-      <span class="tab-txt">Vous avez recherché <span class="badge">3</span></span>
+      <span class="tab-txt">Reprendre vos recherches</span>
     </button>
     <button class="tab" data-tab="reco" role="tab">
       <span class="tab-ic">✨</span>
-      <span class="tab-txt">Recommandées pour vous <span class="badge">4</span></span>
+      <span class="tab-txt">Recommandées pour vous</span>
     </button>
   </div>
 
@@ -512,7 +509,7 @@ const data={
   recent:[
     {name:'Peugeot 2008',ctx:'Vu il y a 2 heures',trim:'1.2 PureTech 130 • Allure',fuel:'Essence',gear:'Manuelle',year:'2022',km:'34 200 km',isNew:false,price:'21 990',old:'23 500',month:'289',promo:'PRIX EN BAISSE (-300 €)',delay:'4 semaines',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/990121/image/360/peugeot-2008-active-business-20260519205207-990121-100001-uhd.jpg'},
     {name:'Renault Captur',ctx:'Vu hier',trim:'E-Tech full hybrid 145 • Techno',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'18 600 km',isNew:false,price:'24 490',month:'319',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/977917/52640833_20260312002614.jpg'},
-    {name:'Citroën C3',ctx:'Vu il y a 3 jours',trim:'PureTech 83 • Shine',fuel:'Essence',gear:'Manuelle',year:'2021',km:'41 800 km',isNew:false,price:'15 990',old:'17 200',month:'209',promo:'PRIX EN BAISSE (-1 210 €)',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/997027/citroen-c3-shine-1779798523-997027-1-large.jpg'},
+    {name:'Citroën C3',ctx:'Vu il y a 3 jours',trim:'PureTech 83 • Shine',fuel:'Essence',gear:'Manuelle',year:'2021',km:'41 800 km',isNew:false,price:'15 990',old:'17 200',month:'209',promo:'PRIX EN BAISSE (-1 200 €)',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/997027/citroen-c3-shine-1779798523-997027-1-large.jpg'},
     {name:'Volkswagen Golf',ctx:'Vu il y a 4 jours',trim:'1.5 TSI 130 • Life',fuel:'Essence',gear:'Manuelle',year:'2022',km:'29 300 km',isNew:false,price:'25 990',month:'339',above:'EXCLUSIVITÉ LOA',aboveType:'loa',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/999941/volkswagen-golf-connect-1781347374-999941-1-large.jpg'},
   ],
   searched:[
@@ -521,8 +518,8 @@ const data={
     {name:'Nissan Qashqai',ctx:'Correspond à : SUV · Hybride',trim:'e-Power 190 • Tekna',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'27 900 km',isNew:false,price:'24 490',month:'315',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/966633/51868590_20260123191047.jpg'},
   ],
   reco:[
-    {name:'Renault Austral',ctx:'Car vous avez vu le Renault Captur',trim:'E-Tech full hybrid 200 • Techno',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'19 500 km',isNew:false,price:'27 990',month:'359',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',promo:'COUP DE CŒUR',delay:'4 semaines',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/998988/renault-austral-techno-esprit-alpine-1780438441-998988-1-large.jpg'},
-    {name:'Peugeot 3008',ctx:'Similaire à votre Peugeot 2008 consulté',trim:'Hybrid 136 • Allure',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'24 700 km',isNew:false,price:'28 490',old:'29 900',month:'369',above:'EXCLUSIVITÉ LOA',aboveType:'loa',promo:'PRIX EN BAISSE (-1 410 €)',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/994418/peugeot-3008-allure-1778801428-994418-1-large.jpg'},
+    {name:'Renault Austral',ctx:'Car vous avez vu le Renault Captur',trim:'E-Tech full hybrid 200 • Techno',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'19 500 km',isNew:false,price:'27 990',month:'359',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',delay:'4 semaines',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/998988/renault-austral-techno-esprit-alpine-1780438441-998988-1-large.jpg'},
+    {name:'Peugeot 3008',ctx:'Similaire à votre Peugeot 2008 consulté',trim:'Hybrid 136 • Allure',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'24 700 km',isNew:false,price:'28 490',old:'29 900',month:'369',promo:'PRIX EN BAISSE (-1 400 €)',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/994418/peugeot-3008-allure-1778801428-994418-1-large.jpg'},
     {name:'Kia Sportage',ctx:'Populaire auprès des amateurs de SUV hybride',trim:'1.6 T-GDi HEV 230 • Active',fuel:'Hybride essence',gear:'Auto.',year:'2022',km:'33 200 km',isNew:false,price:'25 990',month:'339',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/999712/53482574_20260601111017.jpg'},
     {name:'Ford Puma',ctx:'Basé sur vos recherches récentes',trim:'1.0 EcoBoost mHEV 125 • Titanium',fuel:'Micro-hybride',gear:'Manuelle',year:'2023',km:'21 400 km',isNew:false,price:'19 990',old:'22 100',month:'259',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',delay:'4 semaines',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/996839/53377042_20260520101159.jpg'},
   ],

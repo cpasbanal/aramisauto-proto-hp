@@ -4,7 +4,7 @@ Prototype d'accueil Aramisauto avec un hero personnalisé à 3 onglets (Récemme
 
 ## Voir la démo
 
-Une fois GitHub Pages activé : [https://<ton-user>.github.io/<nom-du-repo>/](https://cpasbanal.github.io/aramisauto-proto-hp/)
+Une fois GitHub Pages activé : [[https://<ton-user>.github.io/<nom-du-repo>/](https://cpasbanal.github.io/aramisauto-proto-hp/)](https://cpasbanal.github.io/aramisauto-proto-hp/)
 
 ## Contenu
 

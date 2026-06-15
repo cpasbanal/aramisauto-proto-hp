@@ -109,6 +109,11 @@
   .fav:hover{color:var(--orange)}
 
   .card-body{padding:16px 16px 18px;flex:1;display:flex;flex-direction:column}
+  .ctx{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:800;padding:7px 11px;border-radius:8px;margin-bottom:13px;letter-spacing:.1px}
+  .ctx svg{width:15px;height:15px;flex-shrink:0}
+  .ctx.recent{background:var(--teal-soft);color:var(--teal-dark)}
+  .ctx.searched{background:#e9e9ff;color:var(--purple)}
+  .ctx.reco{background:#fff3da;color:#a86a00}
   .price-line{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
   .price{font-size:25px;font-weight:800;color:var(--prussian);line-height:1}
   .disc{background:var(--prussian);color:#fff;font-size:13px;font-weight:800;padding:3px 8px;border-radius:6px}
@@ -170,14 +175,77 @@
   footer a:hover{color:#fff}
   .foot-bottom{padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:#7e8aa3}
 
+  /* sell section */
+  .sellsec{background:linear-gradient(120deg,#dfeef0,#eef4f6);padding:40px 0;margin:10px 0}
+  .sellcard{background:#fff;border-radius:16px;box-shadow:var(--shadow-lg);padding:30px;max-width:480px}
+  .sellcard h2{font-size:26px;color:var(--prussian);font-weight:800;text-align:left;margin-bottom:6px}
+  .sellcard p{color:var(--grey);margin-bottom:16px}
+  .sellcard ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+  .sellcard li{color:var(--ink);font-size:14.5px}
+  .sellcard li::before{content:"✓";color:var(--lime-dark);font-weight:900;margin-right:9px}
+
+  /* category tiles */
+  .cats{display:grid;grid-template-columns:repeat(5,1fr);gap:18px 12px;padding:34px 0 6px}
+  .cat{display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;text-align:center}
+  .cat svg{width:120px;height:60px;color:#9aa3b0}
+  .cat:hover svg{color:var(--prussian)}
+  .cat .lbl{font-size:14px;font-weight:600;color:var(--prussian);display:inline-flex;align-items:center;gap:6px}
+  .cat.on .lbl{background:#e9e9ff;color:var(--purple);font-weight:800;padding:5px 14px;border-radius:20px}
+  .cat .mini{background:var(--lime);color:var(--prussian);font-size:10px;font-weight:800;padding:1px 6px;border-radius:5px}
+
+  /* clients / trustpilot */
+  .clients{display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:22px;align-items:start}
+  .tp{text-align:left}
+  .tp .big{font-size:22px;font-weight:800;color:var(--prussian)}
+  .stars{color:#00b67a;font-size:18px;letter-spacing:2px;margin:4px 0}
+  .tp .src{font-size:12px;color:var(--grey)}
+  .review{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;box-shadow:var(--shadow)}
+  .review .stars{font-size:14px}
+  .review b{display:block;color:var(--prussian);font-size:14px;margin-bottom:4px}
+  .review p{font-size:13px;color:var(--grey)}
+
+  /* comment ça marche */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .step .ph{height:120px;border-radius:12px;background:linear-gradient(160deg,#dbe7ef,#c4d6e2);display:flex;align-items:center;justify-content:center;font-size:42px;overflow:hidden}
+  .step .ph img{width:100%;height:100%;object-fit:cover}
+  .step .n{width:30px;height:30px;border-radius:50%;background:var(--indigo);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;margin:14px 0 8px}
+  .step h3{color:var(--prussian);font-size:15.5px;margin-bottom:6px}
+  .step p{color:var(--grey);font-size:13.5px}
+
+  /* faq */
+  .faqwrap{background:#eafbe4}
+  .faq details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
+  .faq summary{list-style:none;cursor:pointer;padding:18px 20px;font-weight:700;color:var(--prussian);font-size:16px;display:flex;justify-content:space-between;align-items:center}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";font-size:24px;color:var(--grey);font-weight:400}
+  .faq details[open] summary::after{content:"−"}
+  .faq details[open] summary{border-bottom:1px solid var(--line)}
+  .faq .ans{padding:16px 20px;color:var(--grey);font-size:14.5px;line-height:1.6}
+
+  /* browse links */
+  .browse{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+  .browse h4{color:var(--purple);font-size:15px;margin-bottom:12px;font-weight:800}
+  .browse .col{display:flex;flex-direction:column;gap:7px}
+  .browse a{font-size:13.5px;color:var(--ink)}
+  .browse a:hover{color:var(--teal)}
+
+  /* footer extras */
+  .foot-trust{display:flex;align-items:center;gap:10px;padding:0 0 22px;color:#cfd6e4;font-size:13px;flex-wrap:wrap}
+  .foot-trust .stars{color:#00b67a}
+  .group{padding:22px 0;border-top:1px solid #2b3a5e;margin-top:18px;font-size:13px;color:#9aa3b0}
+  .group .brands{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px}
+  .agencies{display:flex;gap:10px 18px;flex-wrap:wrap;padding:18px 0;border-top:1px solid #2b3a5e;margin-top:8px}
+  .agencies a{font-size:12.5px;color:#9aa3b0}
+  .legal{display:flex;gap:8px 18px;flex-wrap:wrap;padding-top:16px;border-top:1px solid #2b3a5e;font-size:12.5px;color:#7e8aa3}
+
   /* prototype note */
   .note{background:#fffbe6;border:1px solid #ffe58f;color:#7a5b00;font-size:13px;padding:8px 0;text-align:center}
 
   /* responsive */
   @media(min-width:1000px){.hero-head h1{font-size:36px}section.block h2{font-size:42px}.sell h2{font-size:34px}.panel-intro .label{font-size:16px}}
-  @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.trust .wrap{grid-template-columns:repeat(2,1fr)}.adv{grid-template-columns:1fr}.foot-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.trust .wrap{grid-template-columns:repeat(2,1fr)}.adv{grid-template-columns:1fr}.foot-grid{grid-template-columns:repeat(2,1fr)}.cats{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:repeat(2,1fr)}.clients{grid-template-columns:1fr}.browse{grid-template-columns:repeat(2,1fr)}}
   @media(max-width:760px){nav.main,.header-right{display:none}.tabs{flex-direction:column}}
-  @media(max-width:640px){.grid{grid-template-columns:1fr}.hero-search{width:100%}.hero-search input{flex:1;width:auto}.header-inner{gap:14px}}
+  @media(max-width:640px){.grid{grid-template-columns:1fr}.hero-search{width:100%}.hero-search input{flex:1;width:auto}.header-inner{gap:14px}.cats{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}.browse{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -283,52 +351,111 @@
   </div>
 </div>
 
+<!-- category tiles -->
+<div class="wrap"><div class="cats" id="cats"></div></div>
+
 <!-- trust strip -->
 <div class="trust"><div class="wrap">
-  <div class="item"><div class="ic">🛡️</div><div><b>Voitures garanties 12 mois</b><span>Reconditionnées en France</span></div></div>
-  <div class="item"><div class="ic">🚚</div><div><b>Livraison en 24h</b><span>Chez vous ou en agence</span></div></div>
-  <div class="item"><div class="ic">↩️</div><div><b>30 jours d'essai</b><span>Satisfait ou remboursé</span></div></div>
-  <div class="item"><div class="ic">💶</div><div><b>Meilleur prix garanti</b><span>Reprise sans obligation d'achat</span></div></div>
+  <div class="item"><div class="ic">🛡️</div><div><b>Voitures garanties 12 mois</b></div></div>
+  <div class="item"><div class="ic">🚚</div><div><b>Livraison chez vous ou en agence en 24h</b></div></div>
+  <div class="item"><div class="ic">↩️</div><div><b>30 jours d'essai, satisfait ou remboursé</b></div></div>
+  <div class="item"><div class="ic">💶</div><div><b>Reprise sans obligation d'achat</b></div></div>
 </div></div>
+
+<!-- sell section -->
+<section class="sellsec">
+  <div class="wrap">
+    <div class="sellcard">
+      <h2>Vous souhaitez vendre votre voiture ?</h2>
+      <p>Avec Aramisauto, vendez votre voiture en toute confiance :</p>
+      <ul>
+        <li>Estimation gratuite en 2 minutes</li>
+        <li>Démarche simplifiée sans contrôle technique</li>
+        <li>Reprise sans obligation d'achat</li>
+        <li>Paiement sécurisé en 24h</li>
+      </ul>
+      <button class="btn btn-primary">Vendre votre voiture maintenant</button>
+    </div>
+  </div>
+</section>
 
 <!-- advantages -->
 <section class="block"><div class="wrap">
   <h2>Découvrez les avantages d'Aramisauto</h2>
-  <p class="sub">Plus de 500 000 clients accompagnés dans leur projet automobile.</p>
   <div class="adv">
-    <div class="a"><div class="ic">🏷️</div><h3>Le meilleur prix garanti</h3><p>Si vous trouvez mieux ailleurs, nous vous remboursons la différence.</p></div>
-    <div class="a"><div class="ic">🔧</div><h3>Reconditionnement en France</h3><p>Jusqu'à 200 points de contrôle pour garantir nos voitures 12 mois.</p></div>
-    <div class="a"><div class="ic">❤️</div><h3>30 jours pour l'adorer</h3><p>Essayez-la 30 jours ou 1 000 km. Pas convaincu ? 100% remboursé.</p></div>
+    <div class="a"><div class="ic">🏷️</div><h3>Le meilleur prix garanti</h3><p>Achetez votre voiture neuve, à faible kilométrage ou d'occasion reconditionnée, au meilleur prix. Si vous trouvez mieux ailleurs, nous vous remboursons la différence.</p></div>
+    <div class="a"><div class="ic">🔧</div><h3>Reconditionnement en France</h3><p>Nos experts vérifient jusqu'à 200 points de contrôle, nous permettant de garantir l'ensemble de nos voitures d'occasion 12 mois.</p></div>
+    <div class="a"><div class="ic">❤️</div><h3>30 jours pour l'adorer</h3><p>Essayez-la pendant 30 jours ou 1 000 km. Si vous n'êtes pas 100% satisfait, votre voiture vous sera 100% remboursée.</p></div>
   </div>
 </div></section>
 
-<!-- sell banner -->
-<div class="wrap" style="margin-bottom:44px">
-  <div class="sell">
-    <div>
-      <h2>Vous souhaitez vendre votre voiture ?</h2>
-      <ul>
-        <li>Estimation gratuite en 2 min</li>
-        <li>Sans contrôle technique</li>
-        <li>Sans obligation d'achat</li>
-        <li>Paiement sécurisé en 24h</li>
-      </ul>
+<!-- clients / trustpilot -->
+<section class="block" style="padding-top:10px"><div class="wrap">
+  <h2>Plus de 500 000 clients ont été accompagnés</h2>
+  <div class="clients" style="margin-top:24px">
+    <div class="tp">
+      <div class="big">Excellent</div>
+      <div class="stars">★★★★★</div>
+      <div class="src">Basé sur 12 809 avis</div>
+      <div class="src">★ Trustpilot</div>
     </div>
-    <button class="btn btn-primary" style="background:var(--teal);padding:14px 26px;font-size:16px">Vendez votre voiture maintenant</button>
+    <div class="review"><div class="stars">★★★★★</div><b>Top bon service</b><p>Je le recommande. Rien à redire, tout s'est très bien passé.</p></div>
+    <div class="review"><div class="stars">★★★★★</div><b>Première expérience de vente</b><p>Première expérience de vente d'un véhicule à Aramisauto, premiers contacts très rapides.</p></div>
+    <div class="review"><div class="stars">★★★★★</div><b>Très bon accueil</b><p>Très bon accueil, prise en charge rapide et efficace jusqu'à la livraison.</p></div>
   </div>
-</div>
+</div></section>
+
+<!-- comment ça marche -->
+<section class="block"><div class="wrap">
+  <h2>Comment ça marche ?</h2>
+  <p class="sub">Avec Aramisauto, achetez votre voiture en toute simplicité, du début à la fin de votre projet.</p>
+  <div class="steps">
+    <div class="step"><div class="ph">🚗</div><div class="n">1</div><h3>Explorez nos modèles et réservez en un clic</h3><p>Parcourez 3 000 voitures neuves, faibles km et d'occasions reconditionnées. Sélectionnez votre voiture préférée et réservez-la.</p></div>
+    <div class="step"><div class="ph">🤝</div><div class="n">2</div><h3>Finalisez votre commande avec un conseiller</h3><p>Un expert vous contactera pour finaliser la commande et organiser la livraison.</p></div>
+    <div class="step"><div class="ph">📦</div><div class="n">3</div><h3>Choisissez la livraison chez vous ou en agence</h3><p>Recevez votre nouvelle voiture à domicile ou récupérez-la dans l'agence la plus proche.</p></div>
+    <div class="step"><div class="ph">🗓️</div><div class="n">4</div><h3>30 jours pour essayer votre nouvelle voiture</h3><p>Vous avez 30 jours ou 1 000 km pour confirmer votre choix, échanger votre voiture ou être intégralement remboursé.</p></div>
+  </div>
+  <div style="text-align:center;margin-top:30px"><button class="btn btn-primary">En savoir plus</button></div>
+</div></section>
+
+<!-- faq -->
+<section class="faqwrap"><div class="wrap" style="padding:44px 0"><div class="faq">
+  <h2 style="font-size:28px;color:var(--prussian);font-weight:800;margin-bottom:24px">Questions les plus posées</h2>
+  <details open><summary>Qu'est-ce qu'une voiture reconditionnée ?</summary><div class="ans">Une voiture reconditionnée est un véhicule d'occasion remis en état selon des standards industriels rigoureux : moins cher que le neuf, plus fiable que l'occasion. Dans nos centres de Donzère et Nemours, chaque véhicule suit un protocole strict avec jusqu'à 200 points de vérification et une garantie pièces et main d'œuvre d'au moins 12 mois.</div></details>
+  <details><summary>Qu'est-ce que le meilleur prix garanti ?</summary><div class="ans">Notre engagement : vous garantir le meilleur prix du marché, à l'achat comme à la vente. Si vous trouvez moins cher ailleurs, nous nous alignons. Si un professionnel vous propose plus pour votre véhicule, nous égalons son offre.</div></details>
+  <details><summary>Quelles sont les garanties d'un constructeur et d'Aramisauto pour l'achat de ma voiture ?</summary><div class="ans">Toutes nos voitures neuves ou 0 km sont sous garantie constructeur. Nos voitures d'occasion reconditionnées bénéficient d'une garantie commerciale (entretien + mécanique), les plus récentes bénéficiant encore de la garantie constructeur.</div></details>
+  <details><summary>Pourquoi vendre sa voiture à un professionnel ?</summary><div class="ans">Avec Aramisauto, vendez votre voiture simplement, en toute confiance et sans obligation d'en acheter une nouvelle. Nos équipes prennent en charge toutes les démarches administratives et procèdent au virement sécurisé dans les 24h suivant la vente.</div></details>
+  <div style="margin-top:8px"><button class="btn btn-ghost">Voir toutes les questions</button></div>
+</div></div></section>
+
+<!-- browse links -->
+<section class="block"><div class="wrap">
+  <h2 style="text-align:left;font-size:28px">Achetez la meilleure voiture</h2>
+  <div class="browse" style="margin-top:24px">
+    <div><h4>Par marques</h4><div class="col" id="b-brands"></div></div>
+    <div><h4>Par modèles</h4><div class="col" id="b-models"></div></div>
+    <div><h4>Par catégories</h4><div class="col" id="b-cats"></div></div>
+    <div><h4>Par carburants</h4><div class="col" id="b-fuels"></div></div>
+  </div>
+</div></section>
 
 <!-- footer -->
 <footer><div class="wrap">
+  <div class="foot-trust"><b style="color:#fff">Excellent</b> <span class="stars">★★★★★</span> 4,5 sur 5 · 12 809 avis · ★ Trustpilot</div>
   <div class="foot-grid">
-    <div><h4>Aramisauto</h4><ul><li><a href="#">Qui sommes-nous ?</a></li><li><a href="#">Rejoignez-nous</a></li><li><a href="#">Nos agences</a></li><li><a href="#">Newsroom</a></li></ul></div>
-    <div><h4>Acheter</h4><ul><li><a href="#">Rechercher une voiture</a></li><li><a href="#">Guide auto</a></li><li><a href="#">Assurances</a></li><li><a href="#">Livraison</a></li></ul></div>
-    <div><h4>Vendre & Financer</h4><ul><li><a href="#">Estimez votre voiture</a></li><li><a href="#">Crédit auto</a></li><li><a href="#">LOA - Leasing</a></li><li><a href="#">LLD</a></li></ul></div>
-    <div><h4>Nous contacter</h4><ul><li><a href="#">09 72 72 20 02</a></li><li><a href="#">Prendre rendez-vous</a></li><li><a href="#">Aide et FAQ</a></li></ul></div>
+    <div><h4>Aramisauto</h4><ul><li><a href="#">Qui sommes-nous ?</a></li><li><a href="#">Rejoignez-nous</a></li><li><a href="#">Nos agences</a></li><li><a href="#">Tout le monde en parle</a></li><li><a href="#">Newsroom</a></li><li><a href="#">Pubs TV et documentaires</a></li><li><a href="#">Aramis Group</a></li></ul></div>
+    <div><h4>Acheter</h4><ul><li><a href="#">Rechercher une voiture</a></li><li><a href="#">Guide auto</a></li><li><a href="#">Assurances</a></li><li><a href="#">Extension de garantie</a></li><li><a href="#">Livraison</a></li><li><a href="#">Nos voitures par régions et départements</a></li></ul></div>
+    <div><h4>Vendre &amp; Financer</h4><ul><li><a href="#">Comment ça marche ?</a></li><li><a href="#">Estimez votre voiture en 2 min</a></li><li><a href="#">Financement de votre voiture</a></li><li><a href="#">Crédit auto</a></li><li><a href="#">LOA - Leasing</a></li><li><a href="#">LLD - Location Longue Durée</a></li></ul></div>
+    <div><h4>Nous contacter</h4><ul><li><a href="#">09 72 72 20 02 (gratuit)</a></li><li><a href="#">Prendre un rendez-vous</a></li><li><a href="#">Envoyez-nous un message</a></li><li><a href="#">Aide et FAQ</a></li></ul></div>
   </div>
-  <div class="foot-bottom">
-    <span>© 2026 Aramisauto.com — Prototype de démonstration</span>
-    <span>Conditions générales · Mentions légales · Gérer mes cookies</span>
+  <div class="group">
+    Aramis Group, leader européen de la vente en ligne de voitures d'occasion aux particuliers. Présent dans 6 pays d'Europe, au travers de 6 marques locales bien établies.
+    <div class="brands"><a href="#">aramisauto</a><a href="#">brumbrum</a><a href="#">cardoen</a><a href="#">CarSupermarket</a><a href="#">clicars</a><a href="#">onlinecars</a></div>
+  </div>
+  <div class="agencies" id="agencies"></div>
+  <div class="legal">
+    <a href="#">Conditions générales</a><a href="#">Mentions légales</a><a href="#">Politique d'utilisation des données</a><a href="#">Gérer mes cookies</a><a href="#">Paiement sécurisé</a><a href="#">Dispositif de signalement</a>
+    <span style="margin-left:auto">© 2026 Aramisauto.com</span>
   </div>
 </div></footer>
 
@@ -342,7 +469,13 @@ function photo(d){
 
 function num(s){return parseInt(String(s).replace(/\s/g,''),10);}
 
-function card(d){
+// contextual line tying each card to its section title
+const CTX_ICON={
+  recent:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  searched:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>',
+  reco:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>'
+};
+function card(d,section){
   const disc = d.old ? `-${Math.round((1-num(d.price)/num(d.old))*100)}%` : '';
   const discEl = disc ? `<span class="disc">${disc}</span>` : '';
   const oldEl = d.old ? `<span class="old">${d.old} €${d.isNew?'<span class="neuf"> neuf</span>':''}</span>` : '';
@@ -352,6 +485,7 @@ function card(d){
   if(d.promo) tags+=`<span class="tag drop">${d.promo}</span>`;
   const tagsEl = tags ? `<div class="tags">${tags}</div>` : '';
   const cond = d.isNew ? `${d.year} • Voiture 0 km` : `${d.year} • ${d.km} • Occasion`;
+  const ctxEl = d.ctx ? `<div class="ctx ${section}">${CTX_ICON[section]}${d.ctx}</div>` : '';
   return `<div class="card">
     <div class="card-img">
       ${tagsEl}
@@ -360,6 +494,7 @@ function card(d){
       <span class="delay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17.5" cy="17" r="2"/></svg>${d.delay}</span>
     </div>
     <div class="card-body">
+      ${ctxEl}
       <div class="price-line">
         <span class="price">${d.price} €</span>${discEl}${oldEl}<span class="info">ⓘ</span>
       </div>
@@ -375,26 +510,26 @@ function card(d){
 
 const data={
   recent:[
-    {name:'Peugeot 2008',trim:'1.2 PureTech 130 • Allure',fuel:'Essence',gear:'Manuelle',year:'2022',km:'34 200 km',isNew:false,price:'21 990',old:'23 500',month:'289',promo:'PRIX EN BAISSE (-300 €)',delay:'4 semaines',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/990121/image/360/peugeot-2008-active-business-20260519205207-990121-100001-uhd.jpg'},
-    {name:'Renault Captur',trim:'E-Tech full hybrid 145 • Techno',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'18 600 km',isNew:false,price:'24 490',month:'319',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/977917/52640833_20260312002614.jpg'},
-    {name:'Citroën C3',trim:'PureTech 83 • Shine',fuel:'Essence',gear:'Manuelle',year:'2021',km:'41 800 km',isNew:false,price:'15 990',old:'17 200',month:'209',promo:'PRIX EN BAISSE (-1 210 €)',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/997027/citroen-c3-shine-1779798523-997027-1-large.jpg'},
-    {name:'Volkswagen Golf',trim:'1.5 TSI 130 • Life',fuel:'Essence',gear:'Manuelle',year:'2022',km:'29 300 km',isNew:false,price:'25 990',month:'339',above:'EXCLUSIVITÉ LOA',aboveType:'loa',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/999941/volkswagen-golf-connect-1781347374-999941-1-large.jpg'},
+    {name:'Peugeot 2008',ctx:'Vu il y a 2 heures',trim:'1.2 PureTech 130 • Allure',fuel:'Essence',gear:'Manuelle',year:'2022',km:'34 200 km',isNew:false,price:'21 990',old:'23 500',month:'289',promo:'PRIX EN BAISSE (-300 €)',delay:'4 semaines',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/990121/image/360/peugeot-2008-active-business-20260519205207-990121-100001-uhd.jpg'},
+    {name:'Renault Captur',ctx:'Vu hier',trim:'E-Tech full hybrid 145 • Techno',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'18 600 km',isNew:false,price:'24 490',month:'319',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/977917/52640833_20260312002614.jpg'},
+    {name:'Citroën C3',ctx:'Vu il y a 3 jours',trim:'PureTech 83 • Shine',fuel:'Essence',gear:'Manuelle',year:'2021',km:'41 800 km',isNew:false,price:'15 990',old:'17 200',month:'209',promo:'PRIX EN BAISSE (-1 210 €)',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/997027/citroen-c3-shine-1779798523-997027-1-large.jpg'},
+    {name:'Volkswagen Golf',ctx:'Vu il y a 4 jours',trim:'1.5 TSI 130 • Life',fuel:'Essence',gear:'Manuelle',year:'2022',km:'29 300 km',isNew:false,price:'25 990',month:'339',above:'EXCLUSIVITÉ LOA',aboveType:'loa',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/999941/volkswagen-golf-connect-1781347374-999941-1-large.jpg'},
   ],
   searched:[
-    {name:'Toyota C-HR',trim:'Hybride 140 • Dynamic',fuel:'Hybride essence',gear:'Auto.',year:'2026',km:'',isNew:true,price:'26 699',old:'34 500',month:'178',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/967905/toyota-c-hr-design-1778480866-967905-1-large.jpg'},
-    {name:'Hyundai Tucson',trim:'1.6 T-GDi Hybrid 150 • Creative',fuel:'Hybride essence',gear:'Auto.',year:'2022',km:'38 400 km',isNew:false,price:'24 690',old:'26 000',month:'319',above:'EXCLUSIVITÉ LOA',aboveType:'loa',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/betamodels/i_695e64c0b90f0.jpg'},
-    {name:'Nissan Qashqai',trim:'e-Power 190 • Tekna',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'27 900 km',isNew:false,price:'24 490',month:'315',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/966633/51868590_20260123191047.jpg'},
+    {name:'Toyota C-HR',ctx:'Correspond à : SUV · Hybride',trim:'Hybride 140 • Dynamic',fuel:'Hybride essence',gear:'Auto.',year:'2026',km:'',isNew:true,price:'26 699',old:'34 500',month:'178',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/967905/toyota-c-hr-design-1778480866-967905-1-large.jpg'},
+    {name:'Hyundai Tucson',ctx:'Correspond à : SUV · Hybride · ≤ 25 000 €',trim:'1.6 T-GDi Hybrid 150 • Creative',fuel:'Hybride essence',gear:'Auto.',year:'2022',km:'38 400 km',isNew:false,price:'24 690',old:'26 000',month:'319',above:'EXCLUSIVITÉ LOA',aboveType:'loa',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/betamodels/i_695e64c0b90f0.jpg'},
+    {name:'Nissan Qashqai',ctx:'Correspond à : SUV · Hybride',trim:'e-Power 190 • Tekna',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'27 900 km',isNew:false,price:'24 490',month:'315',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/966633/51868590_20260123191047.jpg'},
   ],
   reco:[
-    {name:'Renault Austral',trim:'E-Tech full hybrid 200 • Techno',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'19 500 km',isNew:false,price:'27 990',month:'359',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',promo:'COUP DE CŒUR',delay:'4 semaines',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/998988/renault-austral-techno-esprit-alpine-1780438441-998988-1-large.jpg'},
-    {name:'Peugeot 3008',trim:'Hybrid 136 • Allure',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'24 700 km',isNew:false,price:'28 490',old:'29 900',month:'369',above:'EXCLUSIVITÉ LOA',aboveType:'loa',promo:'PRIX EN BAISSE (-1 410 €)',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/994418/peugeot-3008-allure-1778801428-994418-1-large.jpg'},
-    {name:'Kia Sportage',trim:'1.6 T-GDi HEV 230 • Active',fuel:'Hybride essence',gear:'Auto.',year:'2022',km:'33 200 km',isNew:false,price:'25 990',month:'339',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/999712/53482574_20260601111017.jpg'},
-    {name:'Ford Puma',trim:'1.0 EcoBoost mHEV 125 • Titanium',fuel:'Micro-hybride',gear:'Manuelle',year:'2023',km:'21 400 km',isNew:false,price:'19 990',old:'22 100',month:'259',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',delay:'4 semaines',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/996839/53377042_20260520101159.jpg'},
+    {name:'Renault Austral',ctx:'Car vous avez vu le Renault Captur',trim:'E-Tech full hybrid 200 • Techno',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'19 500 km',isNew:false,price:'27 990',month:'359',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',promo:'COUP DE CŒUR',delay:'4 semaines',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/998988/renault-austral-techno-esprit-alpine-1780438441-998988-1-large.jpg'},
+    {name:'Peugeot 3008',ctx:'Similaire à votre Peugeot 2008 consulté',trim:'Hybrid 136 • Allure',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'24 700 km',isNew:false,price:'28 490',old:'29 900',month:'369',above:'EXCLUSIVITÉ LOA',aboveType:'loa',promo:'PRIX EN BAISSE (-1 410 €)',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/994418/peugeot-3008-allure-1778801428-994418-1-large.jpg'},
+    {name:'Kia Sportage',ctx:'Populaire auprès des amateurs de SUV hybride',trim:'1.6 T-GDi HEV 230 • Active',fuel:'Hybride essence',gear:'Auto.',year:'2022',km:'33 200 km',isNew:false,price:'25 990',month:'339',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/999712/53482574_20260601111017.jpg'},
+    {name:'Ford Puma',ctx:'Basé sur vos recherches récentes',trim:'1.0 EcoBoost mHEV 125 • Titanium',fuel:'Micro-hybride',gear:'Manuelle',year:'2023',km:'21 400 km',isNew:false,price:'19 990',old:'22 100',month:'259',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',delay:'4 semaines',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/996839/53377042_20260520101159.jpg'},
   ],
 };
 
 ['recent','searched','reco'].forEach(k=>{
-  document.getElementById('grid-'+k).innerHTML=data[k].map(card).join('');
+  document.getElementById('grid-'+k).innerHTML=data[k].map(d=>card(d,k)).join('');
 });
 
 // tab switching
@@ -416,6 +551,29 @@ document.addEventListener('click',e=>{
     e.target.style.color=f?'#ff6b35':'';
   }
 });
+
+// ---- category tiles ----
+const CARSIL='<svg viewBox="0 0 120 60" fill="currentColor"><path d="M12 44c-1 0-3-1-3-4l1-7c0-2 2-4 5-5l8-2 9-9c2-2 5-3 8-3h28c4 0 8 2 11 5l8 8 13 2c4 1 7 3 7 7v7c0 2-2 4-4 4h-6a8 8 0 0 0-16 0H40a8 8 0 0 0-16 0z"/><circle cx="32" cy="46" r="7" fill="#fff"/><circle cx="32" cy="46" r="3.5"/><circle cx="88" cy="46" r="7" fill="#fff"/><circle cx="88" cy="46" r="3.5"/></svg>';
+const cats=[
+  {l:'Toutes nos offres',on:true},{l:'Prix en baisse',mini:true},{l:'Neuves & faibles km'},{l:'Voitures d’occasion'},{l:'SUV'},
+  {l:'Électriques'},{l:'Hybrides'},{l:'Citadines'},{l:'Monospace & familiales'},{l:'Berlines'}
+];
+document.getElementById('cats').innerHTML=cats.map(c=>`<a class="cat ${c.on?'on':''}">${CARSIL}<span class="lbl">${c.l}${c.mini?'<span class="mini">↓</span>':''}</span></a>`).join('');
+
+// ---- browse links ----
+const brands='Renault,Peugeot,Citroën,Opel,Dacia,Volkswagen,Audi,Nissan,Fiat,Hyundai,Kia,Ford,BMW,Mercedes,Toyota,DS,Cupra,Mini,Jeep,Seat,Skoda,Tesla,Volvo,Alfa Romeo,MG,BYD,Suzuki,Mitsubishi'.split(',');
+const models='Peugeot 208,Peugeot 2008,Peugeot 308,Peugeot 3008,Peugeot 5008,Fiat 500,Toyota C-HR,Citroën C3,Citroën C4,Citroën C3 Aircross,Citroën C5 Aircross,Opel Corsa,Renault Captur,Renault Austral,Renault Clio 5,Renault Rafale,Renault Symbioz,Renault Arkana,Dacia Duster,Dacia Jogger,Dacia Sandero,Volkswagen Golf,Volkswagen Taigo,Volkswagen T-cross,Nissan Qashqai,Hyundai Tucson,Toyota Yaris Cross,Skoda Kamiq,Ford Puma,Kia Sportage,MG HS,Cupra Formentor,Hyundai i20'.split(',');
+const bcats='Citadines,4x4 et SUV,Berline compacte,Break,Routière,Monospace,Cabriolet,Coupé,Ludospace,Utilitaire'.split(',');
+const fuels='Essence,Micro-hybride essence,GPL,Éthanol E85,Diesel,Micro-hybride diesel,Hybride non-rechargeable,Hybride rechargeable,Micro-hybride,Électrique,CNG'.split(',');
+const lk=a=>a.map(x=>`<a href="#">${x}</a>`).join('');
+document.getElementById('b-brands').innerHTML=lk(brands);
+document.getElementById('b-models').innerHTML=lk(models);
+document.getElementById('b-cats').innerHTML=lk(bcats);
+document.getElementById('b-fuels').innerHTML=lk(fuels);
+
+// ---- agencies ----
+const agencies='Aix-en-Provence,Amiens,Anglet,Annecy,Avignon,Bordeaux,Brest,Caen,Cannes,Cergy-Pontoise,Chambéry,Clermont-Ferrand,Dijon,Donzère,Grenoble,Les Ulis,Lille,Lorient,Lyon-Décines,Lyon-Irigny,Meaux,Melun,Metz,Montpellier,Mulhouse,Nantes,Nemours,Nice,Orgeval,Paris,Poitiers,Reims,Rennes,Rouen,Strasbourg,Toulon,Toulouse,Tours'.split(',');
+document.getElementById('agencies').innerHTML=agencies.map(a=>`<a href="#">Aramisauto ${a}</a>`).join('');
 </script>
 </body>
 </html>

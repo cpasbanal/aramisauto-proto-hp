@@ -60,22 +60,25 @@
   /* ---------- Personalised hero (replaces banner) ---------- */
   .hero{background:linear-gradient(180deg,#ffffff 0%, #f4f6f8 100%);padding:30px 0 10px}
   .hero-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px}
-  .hero-head h1{font-size:26px;color:var(--navy);font-weight:800}
+  .hero-head h1{font-size:30px;color:var(--navy);font-weight:800}
   .hero-head h1 b{color:var(--teal)}
   .hero-head p{color:var(--grey);font-size:14.5px;margin-top:4px}
-  .hero-search{display:flex;gap:10px}
-  .hero-search input{border:1px solid var(--line);border-radius:10px;padding:11px 14px;width:240px;font-size:14px;font-family:inherit}
+  .hero-search{display:flex;gap:10px;width:100%;margin-top:26px}
+  .hero-search input{flex:1;border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-size:15px;font-family:inherit}
   .hero-search input:focus{outline:none;border-color:var(--teal)}
+  .hero-search .btn{padding:14px 28px;white-space:nowrap}
 
-  /* tabs */
-  .tabs{display:flex;gap:6px;border-bottom:2px solid var(--line);margin-bottom:22px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
-  .tabs::-webkit-scrollbar{display:none}
-  .tab{appearance:none;background:none;border:none;font-family:inherit;cursor:pointer;font-size:15.5px;font-weight:700;color:var(--grey);padding:14px 18px;white-space:nowrap;position:relative;display:flex;align-items:center;gap:9px}
-  .tab .badge{background:var(--line);color:var(--grey);font-size:12px;font-weight:700;border-radius:20px;padding:1px 9px}
-  .tab:hover{color:var(--navy)}
-  .tab.active{color:var(--teal)}
-  .tab.active .badge{background:var(--teal-soft);color:var(--teal-dark)}
-  .tab.active::after{content:"";position:absolute;left:12px;right:12px;bottom:-2px;height:3px;background:var(--teal);border-radius:3px}
+  /* tabs — segmented cards */
+  .tabs{display:flex;gap:14px;margin-bottom:26px}
+  .tab{flex:1;appearance:none;display:flex;align-items:center;gap:13px;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:15px 18px;cursor:pointer;font-family:inherit;text-align:left;transition:.18s;position:relative}
+  .tab:hover{border-color:var(--cartblue);box-shadow:var(--shadow);transform:translateY(-2px)}
+  .tab-ic{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:21px;background:var(--teal-soft);flex-shrink:0}
+  .tab-txt{font-size:16px;font-weight:800;color:var(--prussian);display:flex;align-items:center;gap:8px;line-height:1.2;flex-wrap:wrap}
+  .tab .badge{background:var(--line);color:var(--grey);font-size:12.5px;font-weight:800;border-radius:20px;padding:1px 9px}
+  .tab.active{background:var(--prussian);border-color:var(--prussian);box-shadow:var(--shadow-lg)}
+  .tab.active .tab-txt{color:#fff}
+  .tab.active .tab-ic{background:var(--lime)}
+  .tab.active .badge{background:var(--lime);color:var(--prussian)}
 
   .panel{display:none;animation:fade .25s ease}
   .panel.active{display:block}
@@ -88,25 +91,36 @@
   .seeall:hover{text-decoration:underline}
 
   /* car grid */
-  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:.18s;cursor:pointer;display:flex;flex-direction:column}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:.18s;cursor:pointer;display:flex;flex-direction:column}
   .card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
-  .card-img{position:relative;height:165px;background:#eef2f5;overflow:hidden}
+
+  .card-img{position:relative;width:100%;aspect-ratio:4/3;background:#eef2f5;overflow:hidden}
   .card-img img{width:100%;height:100%;object-fit:cover;display:block}
-  .tag{position:absolute;top:10px;left:10px;background:var(--orange);color:#fff;font-size:11px;font-weight:800;padding:4px 9px;border-radius:6px;letter-spacing:.3px}
-  .tag.eco{background:var(--lime);color:var(--prussian)}
-  .fav{position:absolute;top:9px;right:10px;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--grey);border:none;cursor:pointer}
+  /* compact promo tags, stacked top-left */
+  .tags{position:absolute;top:10px;left:10px;display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+  .tag{font-size:11px;font-weight:800;padding:4px 9px;border-radius:6px;letter-spacing:.3px;background:var(--orange);color:var(--prussian)}
+  .tag.loa{background:#e9e9ff;color:var(--purple)}
+  .tag.green{background:var(--indigo);color:#fff}
+  .tag.drop{background:var(--lime);color:var(--prussian)}
+  .delay{position:absolute;bottom:10px;right:10px;background:rgba(255,255,255,.95);color:var(--prussian);font-size:11px;font-weight:700;padding:3px 7px;border-radius:6px;display:flex;align-items:center;gap:4px;box-shadow:0 1px 5px rgba(0,0,0,.12)}
+  .delay svg{width:12px;height:12px}
+  .fav{position:absolute;top:10px;right:12px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--grey);border:none;cursor:pointer}
   .fav:hover{color:var(--orange)}
-  .card-body{padding:13px 14px 16px;flex:1;display:flex;flex-direction:column}
-  .card-body h3{font-size:15.5px;color:var(--navy);font-weight:800}
-  .card-body .trim{font-size:13px;color:var(--grey);margin:2px 0 9px}
-  .specs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-  .specs span{background:var(--bg);color:var(--grey);font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:6px}
-  .price-row{margin-top:auto;display:flex;align-items:flex-end;justify-content:space-between}
-  .price{font-size:20px;font-weight:800;color:var(--navy)}
-  .price small{display:block;font-size:11.5px;color:var(--grey);font-weight:600}
-  .price .old{font-size:12.5px;color:#a4abb8;text-decoration:line-through;font-weight:600}
-  .monthly{font-size:12.5px;color:var(--teal-dark);font-weight:700;text-align:right}
+
+  .card-body{padding:16px 16px 18px;flex:1;display:flex;flex-direction:column}
+  .price-line{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .price{font-size:25px;font-weight:800;color:var(--prussian);line-height:1}
+  .disc{background:var(--prussian);color:#fff;font-size:13px;font-weight:800;padding:3px 8px;border-radius:6px}
+  .old{font-size:14px;color:#a4abb8;text-decoration:line-through;font-weight:600}
+  .old .neuf{color:#8a93a3;text-decoration:none;font-weight:600;margin-left:2px}
+  .info{color:#b6bdc8;font-size:14px}
+  .monthly{font-size:14px;color:var(--ink);font-weight:600;margin-top:6px;display:flex;align-items:center;gap:6px}
+  .monthly .info{font-size:13px}
+  .card-body hr{border:none;border-top:1px solid var(--line);margin:14px 0}
+  .card-body h3{font-size:18px;color:var(--prussian);font-weight:800}
+  .card-body .trim{font-size:13.5px;color:var(--grey);margin-top:3px}
+  .card-body .cond{font-size:14px;color:var(--prussian);font-weight:800;margin-top:10px}
 
   /* empty / context card for "you searched for" */
   .search-context{background:var(--teal-soft);border:1px dashed var(--teal);border-radius:var(--radius);padding:14px 18px;margin-bottom:18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
@@ -134,7 +148,7 @@
 
   /* ---------- advantages ---------- */
   section.block{padding:44px 0}
-  section.block h2{font-size:26px;color:var(--navy);text-align:center;margin-bottom:8px;font-weight:800}
+  section.block h2{font-size:34px;color:var(--navy);text-align:center;margin-bottom:8px;font-weight:800}
   section.block .sub{text-align:center;color:var(--grey);max-width:620px;margin:0 auto 30px}
   .adv{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
   .adv .a{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;text-align:center;box-shadow:var(--shadow)}
@@ -144,7 +158,7 @@
 
   /* sell banner */
   .sell{background:linear-gradient(120deg,var(--navy),#22325e);border-radius:18px;color:#fff;padding:34px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-  .sell h2{color:#fff;text-align:left;font-size:24px;margin-bottom:8px}
+  .sell h2{color:#fff;text-align:left;font-size:30px;margin-bottom:8px}
   .sell ul{list-style:none;display:flex;gap:22px;flex-wrap:wrap;color:#cfd6e4;font-size:14px}
   .sell li::before{content:"✓ ";color:var(--teal);font-weight:800}
 
@@ -160,8 +174,9 @@
   .note{background:#fffbe6;border:1px solid #ffe58f;color:#7a5b00;font-size:13px;padding:8px 0;text-align:center}
 
   /* responsive */
+  @media(min-width:1000px){.hero-head h1{font-size:36px}section.block h2{font-size:42px}.sell h2{font-size:34px}.panel-intro .label{font-size:16px}}
   @media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}.trust .wrap{grid-template-columns:repeat(2,1fr)}.adv{grid-template-columns:1fr}.foot-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:760px){nav.main,.header-right{display:none}}
+  @media(max-width:760px){nav.main,.header-right{display:none}.tabs{flex-direction:column}}
   @media(max-width:640px){.grid{grid-template-columns:1fr}.hero-search{width:100%}.hero-search input{flex:1;width:auto}.header-inner{gap:14px}}
 </style>
 </head>
@@ -199,19 +214,23 @@
   <div class="hero-head">
     <div>
       <h1>Bonjour Jérémie — <b>reprenons là où vous en étiez</b></h1>
-      <p>Vos voitures et recherches, réunies au même endroit.</p>
-    </div>
-    <div class="hero-search">
-      <input type="text" placeholder="Marque, modèle, budget…">
-      <button class="btn btn-primary">Chercher</button>
     </div>
   </div>
 
   <!-- TABS -->
   <div class="tabs" role="tablist">
-    <button class="tab active" data-tab="recent" role="tab">🕘 Récemment vues <span class="badge">4</span></button>
-    <button class="tab" data-tab="searched" role="tab">🔍 Vous avez recherché <span class="badge">3</span></button>
-    <button class="tab" data-tab="reco" role="tab">✨ Recommandées pour vous <span class="badge">4</span></button>
+    <button class="tab active" data-tab="recent" role="tab">
+      <span class="tab-ic">🕘</span>
+      <span class="tab-txt">Récemment vues <span class="badge">4</span></span>
+    </button>
+    <button class="tab" data-tab="searched" role="tab">
+      <span class="tab-ic">🔍</span>
+      <span class="tab-txt">Vous avez recherché <span class="badge">3</span></span>
+    </button>
+    <button class="tab" data-tab="reco" role="tab">
+      <span class="tab-ic">✨</span>
+      <span class="tab-txt">Recommandées pour vous <span class="badge">4</span></span>
+    </button>
   </div>
 
   <!-- PANEL: Recently viewed -->
@@ -255,6 +274,14 @@
 <div class="promo-banner"><div class="wrap">
   <a href="#"><img src="https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=1248,fit=cover/https://cms.aramisauto.com/wp-content/uploads/2022/11/Desk-Tabl-Slideshow-1248x254-96.png" alt="Offre Aramisauto"></a>
 </div></div>
+
+<!-- full-width search below the marketing banner -->
+<div class="wrap">
+  <div class="hero-search">
+    <input type="text" placeholder="Marque, modèle, budget…">
+    <button class="btn btn-primary">Chercher</button>
+  </div>
+</div>
 
 <!-- trust strip -->
 <div class="trust"><div class="wrap">
@@ -313,43 +340,56 @@ function photo(d){
     onerror="this.onerror=null;this.style.display='none';this.parentNode.style.background='linear-gradient(160deg,#003C57,#096F72)';">`;
 }
 
+function num(s){return parseInt(String(s).replace(/\s/g,''),10);}
+
 function card(d){
-  const old=d.old?`<span class="old">${d.old} €</span>`:'';
-  const tag=d.tag?`<span class="tag ${d.eco?'eco':''}">${d.tag}</span>`:'';
+  const disc = d.old ? `-${Math.round((1-num(d.price)/num(d.old))*100)}%` : '';
+  const discEl = disc ? `<span class="disc">${disc}</span>` : '';
+  const oldEl = d.old ? `<span class="old">${d.old} €${d.isNew?'<span class="neuf"> neuf</span>':''}</span>` : '';
+  // compact stacked promo tags (previous design)
+  let tags='';
+  if(d.above) tags+=`<span class="tag ${d.aboveType||'loa'}">${d.above}</span>`;
+  if(d.promo) tags+=`<span class="tag drop">${d.promo}</span>`;
+  const tagsEl = tags ? `<div class="tags">${tags}</div>` : '';
+  const cond = d.isNew ? `${d.year} • Voiture 0 km` : `${d.year} • ${d.km} • Occasion`;
   return `<div class="card">
     <div class="card-img">
-      ${tag}<button class="fav" title="Ajouter aux favoris">♡</button>
+      ${tagsEl}
+      <button class="fav" title="Ajouter aux favoris">♡</button>
       ${photo(d)}
+      <span class="delay"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 7h11v8H3zM14 10h4l3 3v2h-7z"/><circle cx="7" cy="17" r="2"/><circle cx="17.5" cy="17" r="2"/></svg>${d.delay}</span>
     </div>
     <div class="card-body">
+      <div class="price-line">
+        <span class="price">${d.price} €</span>${discEl}${oldEl}<span class="info">ⓘ</span>
+      </div>
+      <div class="monthly">Dès ${d.month} €/mois <span class="info">ⓘ</span></div>
+      <hr>
       <h3>${d.name}</h3>
       <div class="trim">${d.trim}</div>
-      <div class="specs"><span>${d.year}</span><span>${d.km}</span><span>${d.fuel}</span><span>${d.gear}</span></div>
-      <div class="price-row">
-        <div class="price">${old} ${d.price} €<small>Prix clé en main</small></div>
-        <div class="monthly">dès ${d.month} €/mois</div>
-      </div>
+      <div class="trim">${d.fuel} • ${d.gear}</div>
+      <div class="cond">${cond}</div>
     </div>
   </div>`;
 }
 
 const data={
   recent:[
-    {name:'Peugeot 2008',trim:'1.2 PureTech Allure',year:'2022',km:'34 200 km',fuel:'Essence',gear:'Auto',price:'21 990',old:'23 500',month:'289',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/990121/image/360/peugeot-2008-active-business-20260519205207-990121-100001-uhd.jpg',tag:'Vu il y a 2h'},
-    {name:'Renault Captur',trim:'E-Tech Hybride Techno',year:'2023',km:'18 600 km',fuel:'Hybride',gear:'Auto',price:'24 490',month:'319',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/betamodels/i_664ca0ee463cc.jpg',tag:'Vu hier',eco:true},
-    {name:'Citroën C3',trim:'PureTech 83 Shine',year:'2021',km:'41 800 km',fuel:'Essence',gear:'Manuelle',price:'15 990',old:'17 200',month:'209',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/997027/citroen-c3-shine-1779798523-997027-1-large.jpg',tag:'-1 210 €'},
-    {name:'Volkswagen Golf',trim:'1.5 TSI Life',year:'2022',km:'29 300 km',fuel:'Essence',gear:'Manuelle',price:'25 990',month:'339',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/999941/volkswagen-golf-connect-1781347374-999941-1-large.jpg',tag:'Vu il y a 3j'},
+    {name:'Peugeot 2008',trim:'1.2 PureTech 130 • Allure',fuel:'Essence',gear:'Manuelle',year:'2022',km:'34 200 km',isNew:false,price:'21 990',old:'23 500',month:'289',promo:'PRIX EN BAISSE (-300 €)',delay:'4 semaines',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/990121/image/360/peugeot-2008-active-business-20260519205207-990121-100001-uhd.jpg'},
+    {name:'Renault Captur',trim:'E-Tech full hybrid 145 • Techno',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'18 600 km',isNew:false,price:'24 490',month:'319',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/977917/52640833_20260312002614.jpg'},
+    {name:'Citroën C3',trim:'PureTech 83 • Shine',fuel:'Essence',gear:'Manuelle',year:'2021',km:'41 800 km',isNew:false,price:'15 990',old:'17 200',month:'209',promo:'PRIX EN BAISSE (-1 210 €)',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/997027/citroen-c3-shine-1779798523-997027-1-large.jpg'},
+    {name:'Volkswagen Golf',trim:'1.5 TSI 130 • Life',fuel:'Essence',gear:'Manuelle',year:'2022',km:'29 300 km',isNew:false,price:'25 990',month:'339',above:'EXCLUSIVITÉ LOA',aboveType:'loa',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/999941/volkswagen-golf-connect-1781347374-999941-1-large.jpg'},
   ],
   searched:[
-    {name:'Toyota C-HR',trim:'Hybride 140 Dynamic',year:'2023',km:'22 100 km',fuel:'Hybride',gear:'Auto',price:'24 990',month:'325',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/967905/toyota-c-hr-design-1778480866-967905-1-large.jpg',tag:'Nouveau',eco:true},
-    {name:'Hyundai Tucson',trim:'1.6 T-GDi Hybrid',year:'2022',km:'38 400 km',fuel:'Hybride',gear:'Auto',price:'24 690',old:'26 000',month:'319',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/betamodels/i_695e64c0b90f0.jpg',tag:'Nouveau',eco:true},
-    {name:'Nissan Qashqai',trim:'e-Power Tekna',year:'2023',km:'27 900 km',fuel:'Hybride',gear:'Auto',price:'24 490',month:'315',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/966633/51868590_20260123191047.jpg',tag:'Nouveau',eco:true},
+    {name:'Toyota C-HR',trim:'Hybride 140 • Dynamic',fuel:'Hybride essence',gear:'Auto.',year:'2026',km:'',isNew:true,price:'26 699',old:'34 500',month:'178',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/967905/toyota-c-hr-design-1778480866-967905-1-large.jpg'},
+    {name:'Hyundai Tucson',trim:'1.6 T-GDi Hybrid 150 • Creative',fuel:'Hybride essence',gear:'Auto.',year:'2022',km:'38 400 km',isNew:false,price:'24 690',old:'26 000',month:'319',above:'EXCLUSIVITÉ LOA',aboveType:'loa',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/betamodels/i_695e64c0b90f0.jpg'},
+    {name:'Nissan Qashqai',trim:'e-Power 190 • Tekna',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'27 900 km',isNew:false,price:'24 490',month:'315',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/966633/51868590_20260123191047.jpg'},
   ],
   reco:[
-    {name:'Renault Austral',trim:'E-Tech full hybrid Techno',year:'2023',km:'19 500 km',fuel:'Hybride',gear:'Auto',price:'27 990',month:'359',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/998988/renault-austral-techno-esprit-alpine-1780438441-998988-1-large.jpg',tag:'Coup de cœur',eco:true},
-    {name:'Peugeot 3008',trim:'Hybrid 136 Allure',year:'2023',km:'24 700 km',fuel:'Hybride',gear:'Auto',price:'28 490',old:'29 900',month:'369',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/994418/peugeot-3008-allure-1778801428-994418-1-large.jpg',tag:'-1 410 €'},
-    {name:'Kia Sportage',trim:'1.6 T-GDi HEV Active',year:'2022',km:'33 200 km',fuel:'Hybride',gear:'Auto',price:'25 990',month:'339',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/999712/53482574_20260601111017.jpg',tag:'Populaire',eco:true},
-    {name:'Ford Puma',trim:'1.0 EcoBoost mHEV Titanium',year:'2023',km:'21 400 km',fuel:'Micro-hybride',gear:'Manuelle',price:'19 990',month:'259',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/996839/53377042_20260520101159.jpg',tag:'Populaire',eco:true},
+    {name:'Renault Austral',trim:'E-Tech full hybrid 200 • Techno',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'19 500 km',isNew:false,price:'27 990',month:'359',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',promo:'COUP DE CŒUR',delay:'4 semaines',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/998988/renault-austral-techno-esprit-alpine-1780438441-998988-1-large.jpg'},
+    {name:'Peugeot 3008',trim:'Hybrid 136 • Allure',fuel:'Hybride essence',gear:'Auto.',year:'2023',km:'24 700 km',isNew:false,price:'28 490',old:'29 900',month:'369',above:'EXCLUSIVITÉ LOA',aboveType:'loa',promo:'PRIX EN BAISSE (-1 410 €)',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_vehicles/production/stock/vo/994418/peugeot-3008-allure-1778801428-994418-1-large.jpg'},
+    {name:'Kia Sportage',trim:'1.6 T-GDi HEV 230 • Active',fuel:'Hybride essence',gear:'Auto.',year:'2022',km:'33 200 km',isNew:false,price:'25 990',month:'339',delay:'24 heures',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/999712/53482574_20260601111017.jpg'},
+    {name:'Ford Puma',trim:'1.0 EcoBoost mHEV 125 • Titanium',fuel:'Micro-hybride',gear:'Manuelle',year:'2023',km:'21 400 km',isNew:false,price:'19 990',old:'22 100',month:'259',aboveType:'green',above:'JOURNÉES PORTES OUVERTES',delay:'4 semaines',img:'https://www.aramisauto.com/cdn-cgi/image/format=auto,quality=75,width=572/https://storage.googleapis.com/aramis_mp_prod/pictures/996839/53377042_20260520101159.jpg'},
   ],
 };
 
